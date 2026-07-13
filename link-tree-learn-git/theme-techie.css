@@ -1,0 +1,227 @@
+:root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #00f0ff;
+    --accent-hover: #00c8d6;
+    --border: #334155;
+    --shadow: 0 4px 14px rgba(0, 240, 255, 0.08);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.03) 0%, transparent 50%);
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0f172a, #00f0ff);
+    color: #0f172a;
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--accent);
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tree {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.branch {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.branch>.node {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: color 0.2s ease;
+}
+
+.branch>.node:hover {
+    color: var(--accent);
+}
+
+.chevron {
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.branch.open>.node .chevron {
+    transform: rotate(90deg);
+}
+
+.children {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid transparent;
+}
+
+.branch.open>.children {
+    border-top-color: var(--border);
+}
+
+.leaf {
+    display: block;
+    padding: 12px 16px 12px 34px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.leaf:last-child {
+    border-bottom: none;
+}
+
+.leaf:hover {
+    background: rgba(0, 240, 255, 0.05);
+    color: var(--accent);
+}
+
+/* Single link (no children) */
+.link-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px 16px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.link-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(0, 240, 255, 0.15);
+    color: var(--accent);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.theme-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.theme-selector label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-right: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.theme-selector select {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.theme-selector select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .branch>.node,
+    .link-card {
+        padding: 12px 14px;
+    }
+
+    .leaf {
+        padding-left: 28px;
+    }
+}

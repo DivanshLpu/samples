@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Tree</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css" id="theme-link" />
+</head>
+
+<body>
+    <main class="container">
+
+        <div class="theme-selector">
+            <label for="theme">Theme:</label>
+            <select id="theme">
+                <option value="style.css">Default</option>
+                <option value="theme-cherry-blossom.css">Cherry Blossom</option>
+                <option value="theme-techie.css">Techie</option>
+            </select>
+        </div>
+
+        <header class="header">
+            <div class="avatar" aria-hidden="true">K</div>
+            <h1 class="title">Kilo's Links</h1>
+            <p class="subtitle">Everything in one place</p>
+        </header>
+
+        <nav class="tree" id="tree" aria-label="Link tree">
+            <!-- Tree is rendered by script.js -->
+        </nav>
+
+        <footer class="footer">Made with HTML, CSS &amp; JS</footer>
+    </main>
+    <script src="theme-switcher.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
