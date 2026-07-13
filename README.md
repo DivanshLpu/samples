@@ -1,2 +1,2 @@
-# portfolio
-this repo contains my portfolio website
+# Samples
+this repo contains my samples website
