@@ -1,0 +1,33 @@
+say("=== Gaba Calculator ===")
+
+let running = true
+
+while running {
+    let op = ask("Operation (+, -, *, / or exit): ")
+
+    if op == "exit" {
+        say("Goodbye!")
+        running = false
+    } else {
+        let a = int(ask("First number: "))
+        let b = int(ask("Second number: "))
+
+        if op == "+" {
+            say(a + b)
+        } else {
+            if op == "-" {
+                say(a - b)
+            } else {
+                if op == "*" {
+                    say(a * b)
+                } else {
+                    if op == "/" {
+                        say(a / b)
+                    } else {
+                        say("Unknown operation.")
+                    }
+                }
+            }
+        }
+    }
+}
