@@ -10,7 +10,7 @@ sudo apt update && sudo apt install -y python3 python3-pip
 pip3 install pyinstaller
 
 # Build the executable
-pyinstaller --onefile --name split_join_linux split_join.py
+pyinstaller --onefile --name split_join_linux main.py
 
 # Output binary will be at:
 # dist/split_join_linux
@@ -30,7 +30,7 @@ brew install python3
 pip3 install pyinstaller
 
 # Build the executable
-pyinstaller --onefile --name split_join_mac split_join.py
+pyinstaller --onefile --name split_join_mac main.py
 
 # Output binary will be at:
 # dist/split_join_mac
@@ -51,7 +51,7 @@ Run in **PowerShell** or **Command Prompt**:
 pip install pyinstaller
 
 # Build the executable
-pyinstaller --onefile --name split_join_windows split_join.py
+pyinstaller --onefile --name split_join_windows main.py
 
 # Output will be at:
 # dist\split_join_windows.exe
