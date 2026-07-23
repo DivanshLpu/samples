@@ -12,16 +12,16 @@ How it works:
 
 USAGE:
   Split a file into 900MB parts:
-    python split_join.py split myfile.zip --size 900
+    python main.py split myfile.zip --size 900
 
   Join parts back (parts can be renamed/shuffled):
-    python split_join.py join ./folder_with_parts --output myfile_restored.zip
+    python main.py join ./folder_with_parts --output myfile_restored.zip
 
   If a folder has parts from MORE THAN ONE split job, list file_ids first:
-    python split_join.py list ./folder_with_parts
+    python main.py list ./folder_with_parts
 
   Then join a specific one:
-    python split_join.py join ./folder_with_parts --file-id <id> --output myfile_restored.zip
+    python main.py join ./folder_with_parts --file-id <id> --output myfile_restored.zip
 """
 
 import argparse
