@@ -310,3 +310,110 @@ to:
 ```
 
 Also, if this relay is controlling **230V mains**, don't put the mains wiring on a breadboard; use an enclosed, appropriately rated relay setup.
+
+---
+
+
+For **Arduino Nano + MFRC522**, this simple code scans the card and prints its RFID data/UID in the **Serial Monitor**.
+
+```cpp
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 10
+#define RST_PIN 9
+
+MFRC522 rfid(SS_PIN, RST_PIN);
+
+void setup()
+{
+  Serial.begin(9600);
+
+  SPI.begin();
+  rfid.PCD_Init();
+
+  Serial.println("RFID Scanner Ready");
+  Serial.println("Place your RFID card/tag...");
+}
+
+void loop()
+{
+  // Check for a new card
+  if (!rfid.PICC_IsNewCardPresent())
+    return;
+
+  // Read the card
+  if (!rfid.PICC_ReadCardSerial())
+    return;
+
+  Serial.println();
+  Serial.println("===== RFID CARD DETECTED =====");
+
+  // Print UID
+  Serial.print("UID: ");
+
+  for (byte i = 0; i < rfid.uid.size; i++)
+  {
+    if (rfid.uid.uidByte[i] < 0x10)
+      Serial.print("0");
+
+    Serial.print(rfid.uid.uidByte[i], HEX);
+
+    if (i < rfid.uid.size - 1)
+      Serial.print(":");
+  }
+
+  Serial.println();
+
+  // Print UID in decimal
+  Serial.print("UID Decimal: ");
+
+  for (byte i = 0; i < rfid.uid.size; i++)
+  {
+    Serial.print(rfid.uid.uidByte[i]);
+
+    if (i < rfid.uid.size - 1)
+      Serial.print(" ");
+  }
+
+  Serial.println();
+
+  // Print card type
+  MFRC522::PICC_Type cardType = rfid.PICC_GetType(rfid.uid.sak);
+
+  Serial.print("Card Type: ");
+  Serial.println(rfid.PICC_GetTypeName(cardType));
+
+  Serial.print("UID Size: ");
+  Serial.print(rfid.uid.size);
+  Serial.println(" bytes");
+
+  Serial.println("==============================");
+
+  // Stop communication with card
+  rfid.PICC_HaltA();
+  rfid.PCD_StopCrypto1();
+
+  delay(1000);
+}
+```
+
+### Serial Monitor
+
+Set the Serial Monitor to **9600 baud**.
+
+Example output:
+
+```text
+RFID Scanner Ready
+Place your RFID card/tag...
+
+===== RFID CARD DETECTED =====
+UID: 53:A7:21:19
+UID Decimal: 83 167 33 25
+Card Type: MIFARE 1KB
+UID Size: 4 bytes
+==============================
+```
+
+This is a good first test before adding the relay. Once you know the UID, you can put that UID into the relay-control program.
