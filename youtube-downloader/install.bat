@@ -17,7 +17,7 @@ REM ------------------------------------------------
 echo [1/2] Downloading application...
 
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "Invoke-WebRequest -Uri 'https://example.com/myapp.exe' -OutFile 'tools\myapp.exe'"
+    "Invoke-WebRequest -Uri 'https://github.com/DivanshLpu/samples/blob/3ae891549b17c9f379e7604d2ad6ce3e96cbb862/youtube-downloader/YouTubeDownloader.exe' -OutFile 'tools\myapp.exe'"
 
 if errorlevel 1 (
     echo.
