@@ -9,4 +9,6 @@ def getAllPosts():
 
 @app.get("/posts/{id}")
 def getSpecificPost(id:int):
+    if id not in data.testprojects :
+        raise HTTPException(status_code=404,detail="Post Not found")
     return data.testprojects.get(id)
