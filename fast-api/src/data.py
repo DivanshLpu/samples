@@ -1,11 +1,11 @@
 import json
 
 testprojects = {
-    1:{"HEYYY1"},
-    2:{"HEYYyy2"},
-    3:{"HEYYyy3"},
-    4:{"HEYYyy4"},
-    5:{"HEYYyy5"}
+    1:{"title":"HEYYY1","content":"HEYE"},
+    2:{"title":"HEYYY2","content":"HEYEYEYEYEY"},
+    3:{"title":"HEYYY3","content":"HEYEYEYEYEYEYEYEYEY"},
+    4:{"title":"HEYYY4","content":"HEYEYEYEYEYEYEYEYEYEYEYEYEYEY"},
+    5:{"title":"HEYYY5","content":"HEYEYEYEYEYEYEYEYEYEYEYEYEYEYEYEYEYEYEYE"},
 }
 
 

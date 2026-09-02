@@ -1,5 +1,6 @@
 from fastapi import FastAPI,HTTPException
 import src.data as data
+from src.schemas import PostCreate
 
 app = FastAPI()
 
@@ -17,5 +18,7 @@ def getSpecificPost(id:int):
     return data.testprojects.get(id)
 
 @app.post("/posts")
-def createPosts():
-    return 0
+def createPosts(post: PostCreate):
+    new_post = {"title":post.title , "content": post.content}
+    data.testprojects[max(data.testprojects.keys())+1]=new_post
+    return new_post
